@@ -18,10 +18,10 @@ const bucket = document.querySelector(".bucket");
 const lcdDisplay = document.querySelector(".lcd-display");
 const lcdTexts = document.querySelectorAll(".lcd-text");
 
-// const socket = io("https://modern-snake-evenly.ngrok-free.app", {
-//   cors: { origin: "https://lance-07.github.io/iot-pipeline-demo" },
-//   extraHeaders: { "ngrok-skip-browser-warning": "true" },
-// });
+const socket = io("https://modern-snake-evenly.ngrok-free.app", {
+  cors: { origin: "https://lance-07.github.io/iot-demo" },
+  extraHeaders: { "ngrok-skip-browser-warning": "true" },
+});
 
 ledButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -79,7 +79,7 @@ lcdForm.addEventListener("submit", (e) => {
 });
 
 socket.on("water_status", (data) => {
-  let status = Number(data.split(": ")[1]);
+  let status = Number(data.split(": ")[1]); // status: 1
 
   if (status == 1) {
     bucket.classList.remove("empty");
