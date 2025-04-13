@@ -25,6 +25,30 @@
         ><button data-active="false" data-led="l5" class="led-button">5</button>
       </div>
 
+      <div class="lcd-display">
+        <div>
+          <ul>
+            <li class="lcd-text"></li>
+            <li class="lcd-text"></li>
+            <li class="lcd-text"></li>
+            <li class="lcd-text"></li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="lcd-form">
+        <div class="input-container">
+          <input
+            type="text"
+            name="text"
+            placeholder="Input the text to display on LCD"
+            required
+            maxlength="20"
+          /><button type="submit" class="lcd-button">Submit</button>
+        </div>
+        <p class="char-count">0/20</p>
+      </form>
+
       <div class="bucket-container">
         <div class="bucket"></div>
       </div>
