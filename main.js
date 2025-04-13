@@ -45,42 +45,43 @@ function sendLEDData(data) {
   });
 }
 
-lcdInput.setAttribute("size", lcdInput.getAttribute("placeholder").length);
-lcdInput.addEventListener("input", updateCharCount);
+// lcdInput.setAttribute("size", lcdInput.getAttribute("placeholder").length);
+// lcdInput.addEventListener("input", updateCharCount);
 
-function updateCharCount() {
-  const currentLength = lcdInput.value.length;
-  const maxLength = lcdInput.maxLength;
-  charCount.textContent = `${currentLength}/${maxLength}`;
-}
+// function updateCharCount() {
+//   const currentLength = lcdInput.value.length;
+//   const maxLength = lcdInput.maxLength;
+//   charCount.textContent = `${currentLength}/${maxLength}`;
+// }
 
-lcdForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+// lcdForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
 
-  const value = String(lcdInput.value.trim());
+//   const value = String(lcdInput.value.trim());
 
-  fetch("https://modern-snake-evenly.ngrok-free.app/text", {
-    method: "POST",
-    headers: { "ngrok-skip-browser-warning": "true" },
-    body: JSON.stringify({ text: value }),
-  })
-    .then((response) => {
-      if (response.ok) {
-        lcdInput.value = "";
-        updateCharCount();
-        alert("Text sent successfully!");
-      } else {
-        throw new Error("Failed to send text");
-      }
-    })
-    .catch((error) => {
-      alert("Failed to send text: " + error.message);
-    });
-});
+//   fetch("https://modern-snake-evenly.ngrok-free.app/text", {
+//     method: "POST",
+//     headers: { "ngrok-skip-browser-warning": "true" },
+//     body: JSON.stringify({ text: value }),
+//   })
+//     .then((response) => {
+//       if (response.ok) {
+//         lcdInput.value = "";
+//         updateCharCount();
+//         alert("Text sent successfully!");
+//       } else {
+//         throw new Error("Failed to send text");
+//       }
+//     })
+//     .catch((error) => {
+//       alert("Failed to send text: " + error.message);
+//     });
+// });
 
 socket.on("water_status", (data) => {
   let status = Number(data.split(": ")[1]); // status: 1
 
+  console.log(data);
   if (status == 1) {
     bucket.classList.remove("empty");
 
