@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>IoT Pipeline Demo</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <header>
+      <h1>Synergy</h1>
+    </header>
+
+    <!-- Buttons, input form, images, simulation of lcd display -->
+
+    <main class="container">
+      <p class="instruction">Click on the button to light the LED's!</p>
+      <div class="buttons">
+        <button data-active="false" data-led="l1" class="led-button">1</button
+        ><button data-active="false" data-led="l2" class="led-button">2</button
+        ><button data-active="false" data-led="l3" class="led-button">3</button
+        ><button data-active="false" data-led="l4" class="led-button">4</button
+        ><button data-active="false" data-led="l5" class="led-button">5</button>
+      </div>
+    </main>
+
+    <footer>
+      <h1>Welcome to IoT Pipeline Demo</h1>
+    </footer>
+  </body>
+
+  <script
+    src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+    crossorigin="anonymous"
+  ></script>
+  <script src="effects.js"></script>
+  <script src="main.js"></script>
+</html>

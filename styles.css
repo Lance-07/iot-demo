@@ -1,0 +1,240 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* CSS Variables */
+:root {
+    --header-height: 60px;
+    --footer-height: 60px;
+}
+
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Press Start 2P", system-ui;
+    min-width: 0;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Base Layout */
+html, body {
+    background-color: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100svw;
+    height: 100svh;
+}
+
+/* Canvas Background */
+canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100svh;
+    z-index: 1;
+}
+
+/* Header Styles */
+header {
+    position: relative;
+    min-height: var(--header-height);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+header h1 {
+    font-size: 1rem;
+    background-color: #0a0a0a;
+}
+
+/* Footer Styles */
+footer {
+    position: relative;
+    min-height: var(--footer-height);
+    margin-top: 8px;
+}
+
+footer h1 {
+    position: absolute;
+    bottom: 1rem;
+    left: 2rem;
+}
+
+/* Main Container */
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    border: 3px dashed #fff;
+    padding: clamp(1rem, 5vw, 3rem);
+    margin-inline: auto;
+}
+
+/* Instruction Text */
+.instruction {
+    padding: 1rem;
+}
+
+/* LED Button Group */
+.buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Button Styles */
+.led-button, .lcd-button {
+    background-color: #0a0a0a;
+    border: 2px solid white;
+    padding: 1rem 2rem;
+    min-width: max-content;
+}
+
+/* Button States */
+button:hover, .led-button[data-active="true"] {
+    background-color: white;
+    color: #0a0a0a;
+    scale: 1.05;
+    transition: all 0.1s ease-in-out;
+}
+
+button:active {
+    scale: 0.95;
+    transition: all 0.1s ease-in-out;
+}
+
+.led-button[data-active="true"]:active {
+    scale: 0.95;
+    transition: all 0.1s ease-in-out;
+}
+
+/* LCD Form Styles */
+.lcd-form {
+    margin-block: 1rem;
+}
+
+input {
+    display: inline;
+    width: 100%;
+    background: #0a0a0a;
+    padding-inline: 8px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.input-container {
+    border: 1px solid #fff;
+    display: flex;
+}
+
+.char-count {
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 375px) {
+    .instruction {
+        text-align: center;
+    }
+    .input-container {
+        flex-direction: column;
+    }
+    input {
+        padding-block: 16px;
+    }
+}
+
+/* Bucket Container Styles */
+.bucket-container {
+    height: 100px;
+    width: 100px;
+    background-color: #8B8B8B;
+    border: 2px solid #373737;
+    padding: 4px;
+    position: relative;
+    box-shadow: inset 2px 2px #FFFFFF40, inset -2px -2px #00000040;
+}
+
+.bucket-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid #000000;
+    pointer-events: none;
+}
+
+/* Bucket Animation Styles */
+.bucket {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    height: 100%;
+    width: 100%;
+}
+
+.filled, .empty {
+    background-size: cover;
+    animation-name: popIn;
+}
+
+.filled {
+    background-image: url('bucket-filled.png');
+}
+
+.empty {
+    background-image: url('bucket-empty.png');
+}
+
+/* Animation Keyframes */
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/*  LCD Display */
+.lcd-display {
+    min-width: 330px;
+    padding: 16px;
+    background-color: green;
+    box-shadow: inset 2px 2px #FFFFFF40, inset -2px -2px #00000040;
+    height: 132px;
+}
+
+.lcd-display div {
+    background-color: #0a0a0a;
+    padding: 8px;
+    height: 100%;
+}
+
+.lcd-display ul {
+    background-color: rgb(132, 0, 255);
+    list-style: none;
+    padding: 4px;
+    height: 100%;
+}
+
+.lcd-display li {
+    color: #0a0a0a;
+}
